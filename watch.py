@@ -8,9 +8,9 @@ class Watch:
         self.SPI.max_speed_hz = 40000000
         self.SPI.mode = 0b01
 
-        self.DC_PIN = gpiozero.DigitalOutputDevice(25, active_high = True, initial_value = False)
-        self.RST_PIN = gpiozero.DigitalOutputDevice(27, active_high = True, initial_value = False)
-        self.DISP_PIN = gpiozero.PWMOutputDevice(18, active_high = True, initial_value = 0, frequency=100000)
+        self.DC_PIN = DigitalOutputDevice(25, active_high = True, initial_value = False)
+        self.RST_PIN = DigitalOutputDevice(27, active_high = True, initial_value = False)
+        self.DISP_PIN = PWMOutputDevice(18, active_high = True, initial_value = 0, frequency=100000)
 
     def WriteData(self, data):
         self.DC_PIN.on()
