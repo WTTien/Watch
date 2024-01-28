@@ -12,7 +12,9 @@ if __name__ == '__main__':
     ColorG = (round(165*63/255) & 0x3F) << 6
     ColorB = (round(0*63/255) & 0x3F) << 12
 
-    Color = ColorB | ColorG | ColorR
+    #Color = ColorB | ColorG | ColorR
 
     for i in range(DrawColor):
-        Watch.WriteData(Color)
+        Watch.WriteData(ColorB)
+        Watch.WriteData(ColorG)
+        Watch.WriteData(ColorR)
