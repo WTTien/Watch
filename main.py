@@ -1,7 +1,7 @@
-from . import watch
+from watch import Watch
 
 if __name__ == '__main__':
-    Watch = watch.Watch()
+    Watch = Watch()
     Watch.Initialise()
     Watch.SetFrame((0,0), (239,239))
 
