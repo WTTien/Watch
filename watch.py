@@ -14,11 +14,11 @@ class Watch:
 
     def WriteData(self, data):
         self.DC_PIN.on()
-        self.SPI.writebytes(data)
+        self.SPI.writebytes([data])
 
     def WriteCommand(self, data):
         self.DC_PIN.off()
-        self.SPI.writebytes(data)
+        self.SPI.writebytes([data])
 
     def Initialise(self):
         self.RST_PIN.on()
