@@ -5,7 +5,7 @@ if __name__ == '__main__':
     Watch.Initialise()
     Watch.SetFrame((0,0), (239,239))
 
-    Watch.DISP_PIN = 0.5
+    Watch.DISP_PIN.value = 0.5
 
     Watch.WriteCommand(0x2C)
     
