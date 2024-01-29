@@ -32,6 +32,7 @@ class Watch:
         sleep(0.05)
         self.RST_PIN.off()
         sleep(0.05)
+        self.RST_PIN.on()
 
         self.WriteCommand(0xEF)     #INREGEN2
     
