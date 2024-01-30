@@ -3,6 +3,11 @@ from time import sleep
 
 Watch = Watch()
 
+def Draw(ColorR, ColorG, ColorB):
+    Watch.WriteData(ColorR)
+    Watch.WriteData(ColorG)
+    Watch.WriteData(ColorB)
+    
 if __name__ == '__main__':
     Watch.Initialise()
     Watch.SetFrame((0,0), (239,239))
@@ -71,8 +76,3 @@ if __name__ == '__main__':
         Draw(ColorR, ColorG, ColorB)
 
     sleep(5)
-
-def Draw(ColorR, ColorG, ColorB):
-    Watch.WriteData(ColorR)
-    Watch.WriteData(ColorG)
-    Watch.WriteData(ColorB)
