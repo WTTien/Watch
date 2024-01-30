@@ -1,30 +1,78 @@
 from watch import Watch
+from time import sleep
+
+Watch = Watch()
 
 if __name__ == '__main__':
-    Watch = Watch()
     Watch.Initialise()
     Watch.SetFrame((0,0), (239,239))
 
     Watch.DISP_PIN.value = 0.5
-
-    Watch.WriteCommand(0x2C)
-    
-    DrawColor = 239
-    #ColorR = round(255*63/255) & 0x3F
+   
+    DrawColor = 239*239
     ColorR = 255 & 0xFF
-    #ColorG = (round(165*63/255) & 0x3F) << 6
     ColorG = 165 & 0xFF
-    #ColorB = (round(0*63/255) & 0x3F) << 12
     ColorB = 0 & 0xFF
 
-    #Color = ColorB | ColorG | ColorR
-
-    Watch.WriteData(ColorB)
-    Watch.WriteData(ColorG)
-    Watch.WriteData(ColorG)
-
+    #Continuously draw a color on the screen
+    Watch.WriteCommand(0x2C)
     for i in range(DrawColor):
-        Watch.WriteCommand(0x3C)
-        Watch.WriteData(ColorB)
-        Watch.WriteData(ColorG)
-        Watch.WriteData(ColorR)
+        Draw(ColorR, ColorG, ColorB)
+
+    sleep(1)
+    
+    #Draw half canvas with one color and continue another half with another color
+    ColorR = 0
+    ColorG = 165
+    ColorB = 15
+    Watch.WriteCommand(0x2C)
+    for i in range (round(DrawColor/2)):
+        Draw(ColorR, ColorG, ColorB)
+    
+    ColorR = 15
+    ColorG = 165
+    ColorB = 0
+    Watch.WriteCommand(0x3C)
+    for i in range (round(DrawColor/2)):
+        Draw(ColorR, ColorG, ColorB)
+
+    sleep(1)
+
+    #Draw half canvas with one color and continue with another color that paint whole canvas
+    ColorR = 15
+    ColorG = 15
+    ColorB = 15
+    Watch.WriteCommand(0x2C)
+    for i in range (round(DrawColor/2)):
+        Draw(ColorR, ColorG, ColorB)
+    
+    ColorR = 255
+    ColorG = 165
+    ColorB = 255
+    Watch.WriteCommand(0x3C)
+    for i in range (DrawColor):
+        Draw(ColorR, ColorG, ColorB)
+
+    sleep(1)
+
+    #Draw half canvas with one color and draw whole canvas from the beginning from another color
+    ColorR = 165
+    ColorG = 0
+    ColorB = 15
+    Watch.WriteCommand(0x2C)
+    for i in range (round(DrawColor/2)):
+        Draw(ColorR, ColorG, ColorB)
+    
+    ColorR = 15
+    ColorG = 0
+    ColorB = 165
+    Watch.WriteCommand(0x2C)
+    for i in range (DrawColor):
+        Draw(ColorR, ColorG, ColorB)
+
+    sleep(5)
+
+def Draw(ColorR, ColorG, ColorB):
+    Watch.WriteData(ColorR)
+    Watch.WriteData(ColorG)
+    Watch.WriteData(ColorB)
