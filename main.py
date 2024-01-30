@@ -7,7 +7,7 @@ def Draw(ColorR, ColorG, ColorB):
     Watch.WriteData(ColorR)
     Watch.WriteData(ColorG)
     Watch.WriteData(ColorB)
-    
+
 if __name__ == '__main__':
     Watch.Initialise()
     Watch.SetFrame((0,0), (239,239))
@@ -29,12 +29,12 @@ if __name__ == '__main__':
     #Draw half canvas with one color and continue another half with another color
     ColorR = 0
     ColorG = 165
-    ColorB = 15
+    ColorB = 150
     Watch.WriteCommand(0x2C)
     for i in range (round(DrawColor/2)):
         Draw(ColorR, ColorG, ColorB)
     
-    ColorR = 15
+    ColorR = 150
     ColorG = 165
     ColorB = 0
     Watch.WriteCommand(0x3C)
@@ -63,12 +63,12 @@ if __name__ == '__main__':
     #Draw half canvas with one color and draw whole canvas from the beginning from another color
     ColorR = 165
     ColorG = 0
-    ColorB = 15
+    ColorB = 165
     Watch.WriteCommand(0x2C)
     for i in range (round(DrawColor/2)):
         Draw(ColorR, ColorG, ColorB)
     
-    ColorR = 15
+    ColorR = 165
     ColorG = 0
     ColorB = 165
     Watch.WriteCommand(0x2C)
