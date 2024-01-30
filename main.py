@@ -8,13 +8,8 @@ def Draw(ColorR, ColorG, ColorB):
     Watch.WriteData(ColorG)
     Watch.WriteData(ColorB)
 
-if __name__ == '__main__':
-    Watch.Initialise()
-    Watch.SetFrame((0,0), (239,239))
-
-    Watch.DISP_PIN.value = 0.5
-   
-    DrawColor = 239*239
+def FirstTry29JanSuccess():
+    DrawColor = 240*240
     ColorR = 255 & 0xFF
     ColorG = 165 & 0xFF
     ColorB = 0 & 0xFF
@@ -75,4 +70,33 @@ if __name__ == '__main__':
     for i in range (DrawColor):
         Draw(ColorR, ColorG, ColorB)
 
+def CheckScreenLocations():
+    BoxSize = 48
+    FrameSize = 240
+
+    for i in range(FrameSize):
+        for j in range(FrameSize):
+            if ((i/BoxSize) % 2) == ((j/BoxSize)%2):
+                ColorR = 0
+                ColorG = 0
+                ColorB = 0
+            else:
+                ColorR = 255
+                ColorG = 255
+                ColorB = 255
+
+            if i==0 and j==0:
+                Watch.WriteCommand(0x2C)
+            else:
+                Watch.WriteCommand(0x3C)
+            
+            Draw(ColorR,ColorG,ColorB)
+
+if __name__ == '__main__':
+    Watch.Initialise()
+    Watch.SetFrame((0,0), (239,239))
+
+    Watch.DISP_PIN.value = 0.5
+    
+    CheckScreenLocations()
     sleep(5)
