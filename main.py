@@ -1,6 +1,7 @@
 from watch import Watch
 from time import sleep
 from math import floor
+import argparse
 
 Watch = Watch()
 
@@ -78,14 +79,24 @@ def CheckScreenLocations():
     for i in range(FrameSize):
         for j in range(FrameSize):
             if (floor(i/BoxSize) % 2) == (floor(j/BoxSize)%2):
-                ColorR = 0
-                ColorG = 0
-                ColorB = 0
+                if args.run == 1:
+                    ColorR = 0
+                    ColorG = 0
+                    ColorB = 0
+                else:
+                    ColorR = 255
+                    ColorG = 255
+                    ColorB = 255
             else:
-                ColorR = 255
-                ColorG = 255
-                ColorB = 255
-
+                if args.run == 1:
+                    ColorR = 255
+                    ColorG = 255
+                    ColorB = 255
+                else:
+                    ColorR = 0
+                    ColorG = 0
+                    ColorB = 0
+            
             if i==0 and j==0:
                 Watch.WriteCommand(0x2C)
             else:
@@ -94,6 +105,10 @@ def CheckScreenLocations():
             Draw(ColorR,ColorG,ColorB)
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--run')
+    args = parser.parse_args()
+    
     Watch.Initialise()
     Watch.SetFrame((0,0), (239,239))
 
