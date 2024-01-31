@@ -10,9 +10,9 @@ args = parser.parse_args()
     
 
 def Draw(ColorR, ColorG, ColorB):
-    Watch.WriteData(ColorR)
-    Watch.WriteData(ColorG)
-    Watch.WriteData(ColorB)
+    watch.WriteData(ColorR)
+    watch.WriteData(ColorG)
+    watch.WriteData(ColorB)
 
 def FirstTry29JanSuccess():
     DrawColor = 240*240
@@ -21,7 +21,7 @@ def FirstTry29JanSuccess():
     ColorB = 0 & 0xFF
 
     #Continuously draw a color on the screen
-    Watch.WriteCommand(0x2C)
+    watch.WriteCommand(0x2C)
     for i in range(DrawColor):
         Draw(ColorR, ColorG, ColorB)
 
@@ -31,14 +31,14 @@ def FirstTry29JanSuccess():
     ColorR = 0
     ColorG = 165
     ColorB = 150
-    Watch.WriteCommand(0x2C)
+    watch.WriteCommand(0x2C)
     for i in range (round(DrawColor/2)):
         Draw(ColorR, ColorG, ColorB)
     
     ColorR = 150
     ColorG = 165
     ColorB = 0
-    Watch.WriteCommand(0x3C)
+    watch.WriteCommand(0x3C)
     for i in range (round(DrawColor/2)):
         Draw(ColorR, ColorG, ColorB)
 
@@ -48,14 +48,14 @@ def FirstTry29JanSuccess():
     ColorR = 15
     ColorG = 15
     ColorB = 15
-    Watch.WriteCommand(0x2C)
+    watch.WriteCommand(0x2C)
     for i in range (round(DrawColor/2)):
         Draw(ColorR, ColorG, ColorB)
     
     ColorR = 255
     ColorG = 165
     ColorB = 255
-    Watch.WriteCommand(0x3C)
+    watch.WriteCommand(0x3C)
     for i in range (DrawColor):
         Draw(ColorR, ColorG, ColorB)
 
@@ -65,14 +65,14 @@ def FirstTry29JanSuccess():
     ColorR = 165
     ColorG = 0
     ColorB = 165
-    Watch.WriteCommand(0x2C)
+    watch.WriteCommand(0x2C)
     for i in range (round(DrawColor/2)):
         Draw(ColorR, ColorG, ColorB)
     
     ColorR = 165
     ColorG = 0
     ColorB = 165
-    Watch.WriteCommand(0x2C)
+    watch.WriteCommand(0x2C)
     for i in range (DrawColor):
         Draw(ColorR, ColorG, ColorB)
 
@@ -102,9 +102,9 @@ def CheckScreenLocations():
                     ColorB = 0
             
             if i==0 and j==0:
-                Watch.WriteCommand(0x2C)
+                watch.WriteCommand(0x2C)
             else:
-                Watch.WriteCommand(0x3C)
+                watch.WriteCommand(0x3C)
             
             Draw(ColorR,ColorG,ColorB)
 
