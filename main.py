@@ -1,5 +1,6 @@
 from watch import Watch
 from time import sleep
+from math import floor
 
 Watch = Watch()
 
@@ -76,7 +77,7 @@ def CheckScreenLocations():
 
     for i in range(FrameSize):
         for j in range(FrameSize):
-            if ((i/BoxSize) % 2) == ((j/BoxSize)%2):
+            if (floor(i/BoxSize) % 2) == (floor(j/BoxSize)%2):
                 ColorR = 0
                 ColorG = 0
                 ColorB = 0
