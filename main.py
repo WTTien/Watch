@@ -3,7 +3,11 @@ from time import sleep
 from math import floor
 import argparse
 
-Watch = Watch()
+watch = Watch()
+parser = argparse.ArgumentParser()
+parser.add_argument('--run')
+args = parser.parse_args()
+    
 
 def Draw(ColorR, ColorG, ColorB):
     Watch.WriteData(ColorR)
@@ -105,14 +109,10 @@ def CheckScreenLocations():
             Draw(ColorR,ColorG,ColorB)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--run')
-    args = parser.parse_args()
-    
-    Watch.Initialise()
-    Watch.SetFrame((0,0), (239,239))
+    watch.Initialise()
+    watch.SetFrame((0,0), (239,239))
 
-    Watch.DISP_PIN.value = 0.5
+    watch.DISP_PIN.value = 0.5
     
     CheckScreenLocations()
     sleep(5)
