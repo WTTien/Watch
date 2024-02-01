@@ -5,7 +5,7 @@ import argparse
 
 watch = Watch()
 parser = argparse.ArgumentParser()
-parser.add_argument('--run')
+parser.add_argument('--run', type = int)
 args = parser.parse_args()
     
 
